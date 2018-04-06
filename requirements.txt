@@ -1,0 +1,7 @@
+lshash3==0.0.8
+tqdm==4.11.2
+msgpack-numpy==0.4.1
+msgpack-python==0.4.8
+boto3==1.4.4
+SQLAlchemy==1.1.6
+numpy==1.14.0
