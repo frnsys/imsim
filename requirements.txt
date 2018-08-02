@@ -5,3 +5,4 @@ msgpack-python==0.4.8
 boto3==1.4.4
 SQLAlchemy==1.1.6
 numpy==1.14.0
+Keras==2.2.2

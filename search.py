@@ -1,13 +1,18 @@
 import cv2
 import sqlite3
+import numpy as np
 from tqdm import tqdm
 from lshash.lshash import LSHash
-from bow import compute_features
+from feats import compute_features
 from common import dec_arr
 
 conn = sqlite3.connect('feats.db')
 c = conn.cursor()
 
+# function to compute chi square dist
+def chi2_distance(histA, histB, eps=1e-10):
+    d = 0.5 * np.sum(((histA - histB) ** 2) / (histA + histB + eps))
+    return d
 
 if __name__ == '__main__':
     n_dim = 40
