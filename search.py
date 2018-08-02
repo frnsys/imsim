@@ -31,6 +31,7 @@ if __name__ == '__main__':
     query = compute_features(im)
 
     # distances: euclidean, true_euclidean, cosine, centred_euclidean, l1norm
+    # <https://github.com/kayzhu/LSHash/blob/master/lshash/lshash.py#L270>
     results = lsh.query(query, num_results=10, distance_func='centred_euclidean')
     ids_dists = [(r[0][1], r[1]) for r in results]
     import ipdb; ipdb.set_trace()
