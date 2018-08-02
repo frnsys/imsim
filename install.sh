@@ -1,3 +1,5 @@
+sudo apt install cmake gcc g++
+sudo apt install python3 python3-pip python3-dev
 sudo apt install libopenblas-dev libatlas-base-dev liblapack-dev libeigen3-dev liblapacke-dev
 source ~/.env/data/bin/activate
 git clone https://github.com/opencv/opencv.git --depth=1
