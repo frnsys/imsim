@@ -8,7 +8,7 @@ from feats import compute_features
 from sklearn.externals import joblib
 from sklearn.neighbors import NearestNeighbors
 
-conn = sqlite3.connect('feats.db.bkup')
+conn = sqlite3.connect('feats.db')
 c = conn.cursor()
 
 print('Preparing index...')
@@ -16,7 +16,7 @@ X = []
 lookup = []
 count = c.execute('SELECT COUNT(id) FROM feats').fetchone()[0]
 for id, feats in tqdm(c.execute('SELECT id, feats FROM feats'), total=count):
-    feats = dec_arr(feats)[0]
+    feats = dec_arr(feats)
     # not sure why some features are nan
     if np.any(np.isnan(feats)):
         continue
