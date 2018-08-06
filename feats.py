@@ -28,7 +28,7 @@ session = models.Session()
 conn = sqlite3.connect('feats.db')
 c = conn.cursor()
 c.execute('CREATE TABLE IF NOT EXISTS feats (id integer primary key, feats blob)')
-processed = set(c.execute('SELECT id FROM feats').fetchall())
+processed = set([e[0] for e in c.execute('SELECT id FROM feats').fetchall()])
 
 def compute_features(img):
     img = img.convert('RGB')
