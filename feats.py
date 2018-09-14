@@ -6,6 +6,7 @@ import sqlite3
 import msgpack
 import msgpack_numpy as m
 import numpy as np
+import tensorflow as tf
 from PIL import Image
 from tqdm import tqdm
 from lib import models
@@ -21,6 +22,7 @@ model = ResNet50(
     weights='imagenet',
     # exclude classification layer
     include_top=False)
+graph = tf.get_default_graph()
 print('Done loading model')
 
 session = models.Session()
@@ -36,7 +38,8 @@ def compute_features(img):
     img = np.array(img)
     img = np.expand_dims(img, axis=0).astype(np.float)
     img = preprocess_input(img)
-    feats = model.predict(img)
+    with graph.as_default():
+        feats = model.predict(img)
     return feats[0].flatten()
 
 
